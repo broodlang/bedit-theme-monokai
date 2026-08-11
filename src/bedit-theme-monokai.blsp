@@ -1,0 +1,24 @@
+(defmodule bedit-theme-monokai
+  "The Monokai theme for bedit, as a plugin contribution — pure data. Exposes
+`(bedit-plugin)`, the contribution map the host folds into M-x theme-select.")
+(def *palette*
+  {:base "#272822"
+   :mantle "#1e1f1c"
+   :surface0 "#3e3d32"
+   :surface1 "#49483e"
+   :surface2 "#75715e"
+   :overlay0 "#75715e"
+   :overlay1 "#90907d"
+   :text "#f8f8f2"
+   :subtext "#cfcfc2"
+   :blue "#66d9ef"
+   :mauve "#ae81ff"
+   :green "#a6e22e"
+   :yellow "#e6db74"
+   :peach "#fd971f"
+   :red "#f92672"
+   :teal "#66d9ef"})
+
+(defn bedit-plugin ()
+  "This package's contribution to bedit: a `:themes` vector the host registers."
+  {:themes [{:name "Monokai" :palette *palette*}]})

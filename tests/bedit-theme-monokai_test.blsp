@@ -1,0 +1,31 @@
+;; The contribution contract — what bedit reads off this plugin. Pure and standalone
+;; (no bedit dependency): `(bedit-plugin)` must return a `:themes` vector of
+;; `{:name :palette}` entries, each palette covering bedit's 16 semantic roles with
+;; `"#rrggbb"` hex strings.
+
+(defmodule bedit-theme-monokai-test
+  (:use test)
+  (:use bedit-theme-monokai))
+
+(def *roles*
+  [:base :mantle :surface0 :surface1 :surface2 :overlay0 :overlay1
+    :text :subtext :blue :mauve :green :yellow :peach :red :teal])
+
+(defn hex6? (s)
+  (and (string? s)
+    (= (count s) 7)
+    (= (char-at s 0) "#")
+    (every? (fn (i) (>= (index-of "0123456789abcdefABCDEF" (char-at s i)) 0))
+      (range 1 7))))
+
+(describe "bedit-plugin — the contribution map"
+  (test "offers the Monokai theme with a map palette"
+    (let (themes (:themes (bedit-plugin)))
+      (is (vector? themes))
+      (is (includes? (map :name themes) "Monokai"))
+      (is (map? (:palette (first themes))))))
+
+  (test "the palette covers bedit's 16 roles with hex colours"
+    (doseq (theme (:themes (bedit-plugin)))
+      (doseq (role *roles*)
+        (is (hex6? (get (:palette theme) role)))))))
