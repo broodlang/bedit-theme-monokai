@@ -16,14 +16,13 @@
   (and (string? s)
     (= (count s) 7)
     (= (string/char-at s 0) "#")
-    (every? (fn (i) (>= (index-of "0123456789abcdefABCDEF" (string/char-at s i)) 0))
-      (range 1 7))))
+    (every? (range 1 7) (fn (i) (>= (index-of "0123456789abcdefABCDEF" (string/char-at s i)) 0)))))
 
 (describe "bedit-plugin — the contribution map"
   (test "offers the Monokai theme with a map palette"
     (let (themes (:themes (bedit-plugin)))
       (is (vector? themes))
-      (is (includes? (map :name themes) "Monokai"))
+      (is (includes? (map themes :name) "Monokai"))
       (is (map? (:palette (first themes))))))
 
   (test "the palette covers bedit's 16 roles with hex colours"
