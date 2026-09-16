@@ -3,7 +3,7 @@
 (project
   :name "bedit-theme-monokai"
   :version "0.3.2"
-  :brood ">= 0.20.0"
+  :brood ">= 0.29.0"
   :description
     "The classic Monokai colour theme for the bedit editor — a plugin package (:enhances bedit)."
   :repository "https://github.com/broodlang/bedit-theme-monokai"
