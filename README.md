@@ -21,7 +21,7 @@ or `M-x package-install RET bedit-theme-monokai RET`. **Monokai** then appears i
 
 ## The contribution contract
 
-```brood
+```brood fragment
 (defn bedit-plugin ()
   {:themes [{:name "Monokai" :palette { … 16 role → "#rrggbb" … }}]})
 ```
