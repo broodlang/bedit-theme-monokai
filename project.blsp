@@ -2,8 +2,8 @@
 ;; package (`:enhances bedit`). Pure data; installed at runtime via M-x package-list.
 (project
   :name "bedit-theme-monokai"
-  :version "0.3.5"
-  :brood ">= 0.42.0"
+  :version "0.3.6"
+  :brood ">= 0.47.0"
   :description
     "The classic Monokai colour theme for the bedit editor — a plugin package (:enhances bedit)."
   :repository "https://github.com/broodlang/bedit-theme-monokai"
